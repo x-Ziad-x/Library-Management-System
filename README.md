@@ -71,3 +71,6 @@ A complete library management solution featuring:
 - Implement user authentication
 - Generate reports
 - Add reservation system
+
+## Credits
+Created by Ziad
