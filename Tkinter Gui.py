@@ -14,9 +14,9 @@ try:
 except Exception as e:
     messagebox.showerror("Database Connection Error", str(e))
 
-root = Tk()
-root.title("📚Library Management System")
-root.geometry("800x600")
+window = Tk()
+window.title("📚Library Management System")
+window.geometry("800x600")
 
 
 def view_members():
@@ -66,9 +66,9 @@ def insert_book():
         messagebox.showerror("Error", str(e))
 
 def display_records(title, records):
-    display_root = Toplevel(root)
-    display_root.title(title)
-    tree = ttk.Treeview(display_root, columns=(1, 2, 3, 4, 5), show="headings", height=20)
+    display_window = Toplevel(window)
+    display_window.title(title)
+    tree = ttk.Treeview(display_window, columns=(1, 2, 3, 4, 5), show="headings", height=20)
     tree.pack()
     for i, column in enumerate(records[0] if records else range(5)):
         tree.heading(i+1, text=f"Column {i+1}")
@@ -76,9 +76,9 @@ def display_records(title, records):
         tree.insert('', 'end', values=row)
 
 
-Label(root, text="Library Management System", font=("Arial", 24)).pack(pady=20)
+Label(window, text="Library Management System", font=("Arial", 24)).pack(pady=20)
 
-frame = Frame(root)
+frame = Frame(window)
 frame.pack(pady=20)
 
 Button(frame, text="View Members", command=view_members, width=20).grid(row=0, column=0, padx=10)
@@ -121,6 +121,6 @@ isbn_entry.grid(row=9, column=1, pady=10)
 
 Button(frame, text="Insert Book", command=insert_book, width=20).grid(row=10, column=0, pady=10)
 
-root.mainloop()
+window.mainloop()
 
 conn.close()
